@@ -8,6 +8,10 @@ Basically, it is a PowerShell script that takes your `Microsoft SQL Server` data
 
 I intend to add a switch to this for other types of databases as well, but it is currently only set up to work with Microsoft SQL Server.
 
+## Future Plans
+
+Eventually, this will be turned into a publicly accessible PowerShell module that creates data driven back end APIs based on whichever type of database you're using so that all of your models are properly built and typed as well as all SQL joins and authentication being handled automatically.
+
 ## SQL2CS Script Usage
 
 `.\SQL2CS.ps1 -ProjectPath "/Path/To/Project" -User "SQLUSER" -Pass "SQLPASS" -Server "SQLSERVER" -Database "SQLDATABASE"`
