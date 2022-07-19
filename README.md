@@ -1,3 +1,7 @@
+## Disclaimer
+
+This project is a work in progress currently.  I have decided to open source it as I can see it being useful to someone as it has been to me.  Some pieces do not work yet, these will be tracked under issues.
+
 ## What is this?
 
 Basically, it is a PowerShell script that takes your `Microsoft SQL Server` database information then creates a `C#` / `ASP.NET Core` back end project with JWT authentication and it automatically builds all GraphQL Queries and Mutations based on your database.  I got tired of having to change code every time anything changed in the database, so I created this to make any code changes needed after making SQL Server changes in the database to be as easy as running a PowerShell script.
