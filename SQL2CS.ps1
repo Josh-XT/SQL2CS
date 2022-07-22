@@ -10,6 +10,7 @@ if((Test-Path -Path "$($ProjectPath)\Program.cs" -ErrorAction SilentlyContinue) 
     dotnet add package "HotChocolate.AspNetCore" -v 12.9.0
     dotnet add package "Microsoft.AspNetCore.Authentication.JwtBearer" -v 5.0.9
     dotnet add package "Microsoft.AspNetCore.Authentication.OpenIdConnect" -v 5.0.0
+    dotnet add package "Swashbuckle.AspNetCore" -v 6.2.3
     dotnet add package "System.IdentityModel.Tokens.Jwt" -v 6.8.0
     dotnet add package "Newtonsoft.Json" -v 13.0.1
     dotnet add package "System.Data.SqlClient" -v 4.8.3
@@ -23,20 +24,17 @@ if(Test-Path -Path "$($ProjectPath)\dbconfig.json" -ErrorAction SilentlyContinue
     $Pass = $Config.Pass
     $Database = $Config.Database
 } else {
-    Add-Content -Path "$($ProjectPath)\dbconfig.json" -Value @"
-{
-    "Server": "$($Server)",
-    "User": "$($User)",
-    "Pass": "$($Pass)",
-    "Database": "$($Database)"
-    "AuthIssuer":"$($AuthIssuer)",
-    "AuthAudience":"$($AuthAudience)",
-    "AuthAPIUser":"$($AuthAPIUser)",
-    "AuthAPIPass":"$($AuthAPIPass)"
-}
-"@
+    Add-Content -Path "$($ProjectPath)\dbconfig.json" -Value (@{
+        "Server" = $Server
+        "User" = $User
+        "Pass" = $Pass
+        "Database" = $Database
+        "AuthIssuer" = $AuthIssuer
+        "AuthAudience" = $AuthAudience
+        "AuthAPIUser" = $AuthAPIUser
+        "AuthAPIPass" = $AuthAPIPas
+    } | Convert-ToJson)
     Add-Content -Path "$($ProjectPath)\.gitignore" -Value "dbconfig.json"
-    
 }
 $Project = $Database.SubString(0,1).ToUpper() + $Database.SubString(1)
 Remove-Item -Path "Properties\launchSettings.json" -Force -ErrorAction SilentlyContinue
@@ -65,7 +63,7 @@ Add-Content -Path "Properties\launchSettings.json" -Value @"
         "dotnetRunMessages": "true",
         "launchBrowser": true,
         "launchUrl": "https://localhost:5001/graphql",
-        "applicationUrl": "https://localhost:5001",
+        "applicationUrl": "https://localhost:5001;https://localhost:7053;http://localhost:5285",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
