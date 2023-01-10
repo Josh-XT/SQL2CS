@@ -1,16 +1,16 @@
-## Disclaimer
+## Project Incomplete and No longer maintained!
 
-This project is a work in progress currently.  I have decided to open source it as I can see it being useful to someone as it has been to me.  Some pieces do not work yet, these will be tracked under issues.
+Shortly after starting on this project, I learned of [Hasura GraphQL Engine](https://github.com/hasura/graphql-engine) which offered solutions to all of the remaining issues that I hadn't worked out with this in a much nicer packaging. 
+
+This is not an optimal way to do what I was doing, it was a project for fun that demonstrates the ability to create a `C#` / `ASP.NET Core` GraphQL web API with a ``PowerShell`` script based on information in a selected database.  It was a good project that helped me better understand cross-language code generation and the power of ``PowerShell`` and ``dotnetcli``.
+
+Anyone is welcome to use this code for anything they would like.  I am not responsible for any vulnerabilities that may be found in the code if there ever are any, this repository is archived and unmaintained.
 
 ## What is this?
 
 Basically, it is a PowerShell script that takes your `Microsoft SQL Server` database information then creates a `C#` / `ASP.NET Core` back end project with JWT authentication and it automatically builds all GraphQL Queries and Mutations based on your database.  I got tired of having to change code every time anything changed in the database, so I created this to make any code changes needed after making SQL Server changes in the database to be as easy as running a PowerShell script.
 
 I intend to add a switch to this for other types of databases as well, but it is currently only set up to work with Microsoft SQL Server.
-
-## Future Plans
-
-Eventually, this will be turned into a publicly accessible PowerShell module that creates data driven back end Web APIs in C# based on whichever type of database you're using so that all of your models are properly built and typed as well as all SQL joins and authentication being handled automatically.
 
 ## SQL2CS Script Usage
 
